@@ -273,6 +273,7 @@ MonoBehaviour:
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  spawnFacingLeft: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
