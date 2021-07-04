@@ -12,25 +12,17 @@ public class Player : MonoBehaviour
 	private BoxCollider2D boxCollider2d;
 	private bool isFacingLeft;
 	public bool spawnFacingLeft = false;
-	private Vector2 facingLeft;
-	private Vector2 facingRight;
 	void Start()
 	{
 		rigidbody2d = transform.GetComponent<Rigidbody2D>();
 		boxCollider2d = transform.GetComponent<BoxCollider2D>();
-		facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
-		facingRight = new Vector2(transform.localScale.x, transform.localScale.y);
 		platformLayerMask = LayerMask.GetMask("Platform");
+		isFacingLeft = spawnFacingLeft;
 
 		if (spawnFacingLeft)
 		{
-			transform.localScale = facingLeft;
-			isFacingLeft = true;
-		}
-		else
-		{
-			transform.localScale = facingRight;
-			isFacingLeft = false;
+			isFacingLeft = !isFacingLeft;
+			Flip();
 		}
 	}
 
@@ -50,14 +42,7 @@ public class Player : MonoBehaviour
 
 	private void Flip()
 	{
-		if (isFacingLeft)
-		{
-			transform.localScale = facingRight;
-		}
-		else
-		{
-			transform.localScale = facingLeft;
-		}
+		transform.Rotate(0f, 180f, 0f);
 		isFacingLeft = !isFacingLeft;
 	}
 
